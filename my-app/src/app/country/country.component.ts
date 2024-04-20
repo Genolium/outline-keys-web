@@ -3,14 +3,15 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { filter, map, switchMap } from 'rxjs/operators';
 import { CountryService } from '../country-service.service';
-import { NgForOf } from '@angular/common';
+import { NgForOf, NgIf } from '@angular/common';
 
 import { CountryList } from '../country-list-component/country-list-component.component';
 
 @Component({
   standalone: true,
   imports: [
-    NgForOf
+    NgForOf,
+    NgIf
   ],
   selector: 'app-country',
   templateUrl: './country.component.html',
@@ -50,7 +51,7 @@ export class CountryComponent {
     } else if (timeDiffHours < 24) {
       return `${timeDiffHours} ч. назад`;
     } else if (timeDiffDays < 30) {
-      return `${timeDiffDays} дней назад`;
+      return `${timeDiffDays} д. назад`;
     } else {
       return `${timeDiffMonths} мес. назад`;
     }

@@ -29,10 +29,12 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
+              "src/favicon.png",
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/deeppurple-amber.css",
               "./node_modules/flag-icon-css/css/flag-icons.min.css"
             ],
             "scripts": []
@@ -91,8 +93,9 @@
             ],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
-            "assets": [
+            "assets": [              
               "src/favicon.ico",
+              "src/favicon.png",
               "src/assets"
             ],
             "styles": [

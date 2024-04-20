@@ -47,14 +47,14 @@ def get_countries():
 def update_country(country_id, name, code):
     with get_connection() as conn:
         cursor = conn.cursor()
-        cursor.execute('UPDATE countries SET name = ?, code = ? WHERE rowid = ?', (name, code, country_id))
+        cursor.execute('UPDATE countries SET name = ?, code = ? WHERE id = ?', (name, code, country_id))
         conn.commit()
 
 # Function to delete a country from the countries table
 def delete_country(country_id):
     with get_connection() as conn:
         cursor = conn.cursor()
-        cursor.execute('DELETE FROM countries WHERE rowid = ?', (country_id,))
+        cursor.execute('DELETE FROM countries WHERE id = ?', (country_id,))
         conn.commit()
 
 
@@ -79,17 +79,17 @@ def get_keys():
         return keys
 
 # Function to update a key in the keys table
-def update_key(key_id, country, date, key):
+def update_key(key_id, country, key):
     with get_connection() as conn:
         cursor = conn.cursor()
-        cursor.execute('UPDATE keys SET country = ?, date = ?, key = ? WHERE rowid = ?', (country, date, key, key_id))
+        cursor.execute('UPDATE keys SET country = ?, key = ? WHERE id = ?', (country, key, key_id))
         conn.commit()
 
 # Function to delete a key from the keys table
 def delete_key(key_id):
     with get_connection() as conn:
         cursor = conn.cursor()
-        cursor.execute('DELETE FROM keys WHERE rowid = ?', (key_id,))
+        cursor.execute('DELETE FROM keys WHERE id = ?', (key_id,))
         conn.commit()
         
 def create_tables():

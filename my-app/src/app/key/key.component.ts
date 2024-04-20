@@ -55,7 +55,7 @@ export class KeyComponent {
     } else if (timeDiffHours < 24) {
       return `${timeDiffHours} ч. назад`;
     } else if (timeDiffDays < 30) {
-      return `${timeDiffDays} дней назад`;
+      return `${timeDiffDays} д. назад`;
     } else{
       return `${timeDiffMonths} мес. назад`;
     }
