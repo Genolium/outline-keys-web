@@ -1,0 +1,16 @@
+<div class="mt-3" id="countries">
+  <p *ngIf="countries.length === 0; else listNotEmpty">Ни одной страны еще не добавлено.</p>
+  <ng-template #listNotEmpty>
+    <div class="d-flex flex-wrap">
+      <a *ngFor="let country of countries; let i = index"
+        href="/country/{{country[0]}}/"
+        class="btn btn-outline-dark m-1 text-start align-items-center"
+        [class.me-2]="i !== countries.length - 1"
+        style="width: auto;">
+        <span class="btn-icon flag-icon flag-icon-{{country[2]}}"
+          style="width: 24px; height: 24px;"></span>
+        {{country[1]}}
+      </a>
+    </div>
+  </ng-template>
+</div>
