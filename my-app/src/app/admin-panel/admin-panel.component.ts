@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { CountryService } from '../country-service.service';
 import { CommonModule, NgForOf } from '@angular/common';
+import { AuthService } from '../auth-service.service';
 import {
   FormBuilder,
   FormGroup,
@@ -14,6 +15,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatChipsModule } from '@angular/material/chips';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatCardModule } from '@angular/material/card';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   standalone: true,
@@ -50,15 +52,14 @@ export class AdminComponent implements OnInit {
   keys: any[] = [];
 
   constructor(
+    private http: HttpClient,
+    public authService: AuthService,
     private countryService: CountryService,
     private fb: FormBuilder
   ) {}
 
   ngOnInit() {
-    const cookieValue = this.getCookie('admin_session');
-    if (cookieValue) {
-      this.isLoggedIn = true;
-    }
+    
 
     this.loginForm = this.fb.group({
       login: '',
@@ -97,44 +98,14 @@ export class AdminComponent implements OnInit {
   }
 
   logout() {
-    this.isLoggedIn = false;
-    this.setCookie('admin_session', '', -1);
+    this.authService.logout();
   }
-
 
   onLoginSubmit() {
     const login = this.loginForm.get('login')?.value;
     const password = this.loginForm.get('password')?.value;
 
-    if (login === 'admin' && password === 'admin') {
-      this.isLoggedIn = true;
-      this.setCookie('admin_session', 'admin', 1);
-    }
-  }
-
-  private setCookie(name: string, value: string, days: number) {
-    let expires = "";
-    if (days) {
-      const date = new Date();
-      date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
-      expires = "; expires=" + date.toUTCString();
-    }
-    document.cookie = name + "=" + value + expires + "; path=/";
-  }
-
-  private getCookie(name: string) {
-    const nameEQ = name + "=";
-    const cookies = document.cookie.split(';');
-    for (let i = 0; i < cookies.length; i++) {
-      let cookie = cookies[i];
-      while (cookie.charAt(0) === ' ') {
-        cookie = cookie.substring(1, cookie.length);
-      }
-      if (cookie.indexOf(nameEQ) === 0) {
-        return cookie.substring(nameEQ.length, cookie.length);
-      }
-    }
-    return null;
+    this.authService.login(login, password);
   }
 
   changeSelectedCountry(countryData: any) {

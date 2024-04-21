@@ -1,4 +1,4 @@
-<div class="container mt-4" *ngIf="!isLoggedIn">
+<div class="container mt-4" *ngIf="!this.authService.isAuthenticated()">
     <form class="row g-3" [formGroup]="loginForm" novalidate (ngSubmit)="onLoginSubmit()">
         <h1 class="text-center">Вход</h1>
         <div class="col-md-6 offset-md-3">
@@ -19,7 +19,7 @@
     </form>
 </div>
 
-<div *ngIf="isLoggedIn">
+<div *ngIf="this.authService.isAuthenticated()">
     <div class="container">
         <div class="card bg-dark text-white rounded-3 mb-4">
             <div class="card-body p-3">

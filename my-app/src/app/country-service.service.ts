@@ -1,57 +1,71 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { AuthService } from './auth-service.service';
 import { catchError, tap, throwError } from 'rxjs';
+
+const API_URL = 'http://'+window.location.hostname+':5000';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountryService {
 
-  constructor(private http: HttpClient) { }
+  constructor( public authService: AuthService, private http: HttpClient) { }
 
   getCountries() {
-    return this.http.get<any[]>('http://localhost:5000/api/countries');
+    const url = `${API_URL}/api_open/countries`;
+    return this.http.get<any[]>(url);
   }
   
   getKeys() {
-    return this.http.get<any[]>('http://localhost:5000/api/keys');
+    const url = `${API_URL}/api_open/keys`;
+    return this.http.get<any[]>(url);
   }
 
   getKeysById(key: number) {
-    const url = `http://localhost:5000/api/key/${key}`;
+    const url = `${API_URL}/api_open/key/${key}`;
     return this.http.get<any[]>(url);
   }
 
   getCountriesById(country: number) {
-    const url = `http://localhost:5000/api/country/${country}`;
+    const url = `${API_URL}/api_open/country/${country}`;
     return this.http.get<any[]>(url);
   }
+  
 
   createCountry(data: any) {
-    return this.http.post('http://localhost:5000/api/countries', data);
+    const url = `${API_URL}/api/countries`;
+    const headers = this.authService.getHeaders();
+    return this.http.post(url, data, { headers });
   }
 
   updateCountry(id: number, data: any) {    
-    const url = `http://localhost:5000/api/countries/${id}`;
-    return this.http.put(url, data);
+    const url = `${API_URL}/api/countries/${id}`;
+    const headers = this.authService.getHeaders();
+    return this.http.put(url, data, { headers });
   }
 
   deleteCountry(id: number) {
-    const url = `http://localhost:5000/api/countries/${id}`;
-    return this.http.delete(url);
+    const url = `${API_URL}/api/countries/${id}`;
+    const headers = this.authService.getHeaders();
+    return this.http.delete(url, { headers });
   }
 
   createKey(data: any) {
-    return this.http.post('http://localhost:5000/api/keys', data);
+    const url = `${API_URL}/api/keys`;
+    const headers = this.authService.getHeaders();
+    return this.http.post(url, data, { headers });
   }
 
   updateKey(id: number, data: any) {
-    const url = `http://localhost:5000/api/keys/${id}`;
-    return this.http.put(url, data);
+    const url = `${API_URL}/api/keys/${id}`;
+    const headers = this.authService.getHeaders();
+    return this.http.put(url, data, { headers });
   }
 
   deleteKey(id: number) {
-    const url = `http://localhost:5000/api/keys/${id}`;
-    return this.http.delete(url);
+    const url = `${API_URL}/api/keys/${id}`;
+    const headers = this.authService.getHeaders();
+    return this.http.delete(url, { headers });
   }
 }
