@@ -18,7 +18,7 @@ def login():
     username = request.json.get('username', None)
     password = request.json.get('password', None)
     
-    if username == os.getenv('ADMIN_LOGIN')   and password == os.getenv('ADMIN_PASSWORD')  :
+    if username == os.getenv('ADMIN_LOGIN') and password == os.getenv('ADMIN_PASSWORD')  :
         access_token = create_access_token(identity=username)
         return jsonify(access_token=access_token), 200
     else:

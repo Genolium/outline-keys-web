@@ -1,140 +1,71 @@
-<<<<<<<<<<<<<<  ✨ Codeium Command 🌟 >>>>>>>>>>>>>>>>
-+<div *ngIf="key && key.length > 0">
-+  <div class="block">
-+    <div class="row gx-5">
-+      <div class="d-flex align-items-center">
-+        <span class="me-2 btn-icon flag-icon flag-icon-{{key[2]}}"
-+                              style="height: 45px; width: 60px;border-radius: 3px;"></span>
-+        <h1 class="title-keys">Ключ {{key[1]}} #{{key[0]}}</h1>
--<div class="block">
--  <div class="row gx-5">
--    <div class="d-flex align-items-center">
--      <span class="me-2 btn-icon flag-icon flag-icon-{{key[2]}}"
--                            style="height: 45px; width: 60px;border-radius: 3px;"></span>
--      <h1 class="title-keys">Ключ {{key[1]}} #{{key[0]}}</h1>
--    </div>
--    <div class="d-flex align-items-center mt-1">
--      <div class="d-flex align-items-center"><i class="me-1 status-online"></i><span
--          style="color: #048A00;">Online</span></div>      
--      <div class="me-1 text-muted ms-1">•</div>
--      <span class="d-inline-block text-truncate">{{getTime(key[3])}}</span>
--    </div>
--  </div>
--</div>
--
--<div class="mt-2">
--  <div class="text-muted text-truncate mb-1">by <a href="https://t.me/outlineOpenKey" rel="nofollow" target="_blank"
--      class="text-decoration-none">@outlineOpenKey</a> / Telegram Канал</div> <textarea
--    class="form-control shadow-none" id="accessKey" rows="3"
--    readonly="">{{key[4]}}</textarea>
--  <div class="mt-2 d-flex justify-content-center">
--    <a class="btn btn-success me-2"
--      href="{{key[4]}}">Открыть</a>
--    <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#qrcodemodal">QR-Код</button>
--    <button type="button" class="btn btn-dark" (click)="copyToClipboard()" id="copyButton">Скопировать</button>
--  </div>
--</div>
--
--<div class="modal fade" id="qrcodemodal" tabindex="-1" aria-labelledby="qrcodemodalLabel" aria-hidden="true">
--  <div class="modal-dialog">
--    <div class="modal-content">
--      <div class="modal-header">
--        <h5 class="modal-title" id="qrcodemodalLabel">QR-Код</h5>
--        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-+      <div class="d-flex align-items-center mt-1">
-+        <div class="d-flex align-items-center"><i class="me-1 status-online"></i><span
-+            style="color: #048A00;">Online</span></div>      
-+        <div class="me-1 text-muted ms-1">•</div>
-+        <span class="d-inline-block text-truncate">{{getTime(key[3])}}</span>
--      <div class="modal-body">
--        <p class="fw-bolder">Добавьте ключ с помощью QR-кода</p>
--        <ul>
--          <li>Откройте приложение камеры на вашем телефоне</li>
--          <li>Наведите телефон на эту страницу, чтобы добавить ключ</li>
--        </ul>
--        <hr>
--        <div class="d-flex justify-content-center mt-2">
--          <ngx-qrcode
--            [elementType]="elementType"
--            [errorCorrectionLevel]="correctionLevel"
--            [value]="value"
--            cssClass="bshadow"></ngx-qrcode>
--        </div>
-      </div>
--      <div class="modal-footer">
--        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
--      </div>
+<div class="block">
+  <div class="row gx-5">
+    <div class="d-flex align-items-center">
+      <span class="me-2 btn-icon flag-icon flag-icon-{{key[2]}}"
+                            style="height: 45px; width: 60px;border-radius: 3px;"></span>
+      <h1 class="title-keys">Ключ {{key[1]}} #{{key[0]}}</h1>
+    </div>
+    <div class="d-flex align-items-center mt-1">
+      <div class="d-flex align-items-center"><i class="me-1 status-online"></i><span
+          style="color: #048A00;">Online</span></div>      
+      <div class="me-1 text-muted ms-1">•</div>
+      <span class="d-inline-block text-truncate">{{getTime(key[3])}}</span>
     </div>
   </div>
--</div>
+</div>
 
-+  <div class="mt-2">
-+    <div class="text-muted text-truncate mb-1">by <a href="https://t.me/outlineOpenKey" rel="nofollow" target="_blank"
-+        class="text-decoration-none">@outlineOpenKey</a> / Telegram Канал</div> <textarea
-+      class="form-control shadow-none" id="accessKey" rows="3"
-+      readonly="">{{key[4]}}</textarea>
-+    <div class="mt-2 d-flex justify-content-center">
-+      <a class="btn btn-success me-2"
-+        href="{{key[4]}}">Открыть</a>
-+      <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#qrcodemodal">QR-Код</button>
-+      <button type="button" class="btn btn-dark" (click)="copyToClipboard()" id="copyButton">Скопировать</button>
-+    </div>
-+  </div>
--<div class="mt-3 mb-1">
--  <p><strong>Как подключиться?</strong></p>
--  <ul>
--    <li><a class="text-decoration-none" href="https://getoutline.org/ru/">Скачайте приложение Outline</a> для вашего устройства</li>
--    <li>Скопируйте ключ и откройте приложение</li>
--    <li>Вставьте ключ, нажав "+" (добавить)</li>
--    <li>Подключите к серверу</li>
--  </ul>
--</div>
+<div class="mt-2">
+  <div class="text-muted text-truncate mb-1">by <a href="https://t.me/outlineOpenKey" rel="nofollow" target="_blank"
+      class="text-decoration-none">@outlineOpenKey</a> / Telegram Канал</div> <textarea
+    class="form-control shadow-none" id="accessKey" rows="3"
+    readonly="">{{key[4]}}</textarea>
+  <div class="mt-2 d-flex justify-content-center">
+    <a class="btn btn-success me-2"
+      href="{{key[4]}}">Открыть</a>
+    <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#qrcodemodal">QR-Код</button>
+    <button type="button" class="btn btn-dark" (click)="copyToClipboard()" id="copyButton">Скопировать</button>
+  </div>
+</div>
 
-+  <div class="modal fade" id="qrcodemodal" tabindex="-1" aria-labelledby="qrcodemodalLabel" aria-hidden="true">
-+    <div class="modal-dialog">
-+      <div class="modal-content">
-+        <div class="modal-header">
-+          <h5 class="modal-title" id="qrcodemodalLabel">QR-Код</h5>
-+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-+        </div>
-+        <div class="modal-body">
-+          <p class="fw-bolder">Добавьте ключ с помощью QR-кода</p>
-+          <ul>
-+            <li>Откройте приложение камеры на вашем телефоне</li>
-+            <li>Наведите телефон на эту страницу, чтобы добавить ключ</li>
-+          </ul>
-+          <hr>
-+          <div class="d-flex justify-content-center mt-2">
-+            <ngx-qrcode
-+              [elementType]="elementType"
-+              [errorCorrectionLevel]="correctionLevel"
-+              [value]="value"
-+              cssClass="bshadow"></ngx-qrcode>
-+          </div>
-+        </div>
-+        <div class="modal-footer">
-+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
-+        </div>
-+      </div>
-+    </div>
-+  </div>
-+
-+  <div class="mt-3 mb-1">
-+    <p><strong>Как подключиться?</strong></p>
-+    <ul>
-+      <li><a class="text-decoration-none" href="https://getoutline.org/ru/">Скачайте приложение Outline</a> для вашего устройства</li>
-+      <li>Скопируйте ключ и откройте приложение</li>
-+      <li>Вставьте ключ, нажав "+" (добавить)</li>
-+      <li>Подключите к серверу</li>
-+    </ul>
-+  </div>
-+
-+  <h4>Все страны</h4>
-+  <app-country-list-component></app-country-list-component>
-+
-+</div>
--<h4>Все страны</h4>
+<div class="modal fade" id="qrcodemodal" tabindex="-1" aria-labelledby="qrcodemodalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="qrcodemodalLabel">QR-Код</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="fw-bolder">Добавьте ключ с помощью QR-кода</p>
+        <ul>
+          <li>Откройте приложение камеры на вашем телефоне</li>
+          <li>Наведите телефон на эту страницу, чтобы добавить ключ</li>
+        </ul>
+        <hr>
+        <div class="d-flex justify-content-center mt-2">
+          <ngx-qrcode
+            [elementType]="elementType"
+            [errorCorrectionLevel]="correctionLevel"
+            [value]="value"
+            cssClass="bshadow"></ngx-qrcode>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Закрыть</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-3 mb-1">
+  <p><strong>Как подключиться?</strong></p>
+  <ul>
+    <li><a class="text-decoration-none" href="https://getoutline.org/ru/">Скачайте приложение Outline</a> для вашего устройства</li>
+    <li>Скопируйте ключ и откройте приложение</li>
+    <li>Вставьте ключ, нажав "+" (добавить)</li>
+    <li>Подключите к серверу</li>
+  </ul>
+</div>
+
+<h4>Все страны</h4>
 <app-country-list-component></app-country-list-component>
 
-<<<<<<<  276171be-f9c7-4c09-b25f-90b037727863  >>>>>>>
