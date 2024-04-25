@@ -92,28 +92,43 @@ def delete_key(key_id):
         cursor.execute('DELETE FROM keys WHERE id = ?', (key_id,))
         conn.commit()
         
-def create_tables():
+def get_link():
     with get_connection() as conn:
         cursor = conn.cursor()
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS countries (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                name TEXT,
-                code TEXT
-            )
-        ''')
-        cursor.execute('''
-            CREATE TABLE IF NOT EXISTS keys (
-                id INTEGER PRIMARY KEY AUTOINCREMENT,
-                country INTEGER,
-                date TEXT,
-                key TEXT,
-                FOREIGN KEY (country) REFERENCES countries (id)
-            )
-        ''')
+        cursor.execute('SELECT * FROM link')
         conn.commit()
-        
-    #insert_country('Россия', 'ru')
-    #insert_country('Соединённые Штаты', 'us')
-    #insert_key('1', '2022-01-01', 'abc123')
-    #insert_key('2', '2022-01-02', 'def456')
+        link = cursor.fetchone()
+        return link
+    
+def change_link(string):
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute('UPDATE link SET string = ? WHERE row_id=1', (string,))
+        conn.commit()
+               
+def create_tables() -> None:
+    """Create tables if they do not exist."""
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        create_table(cursor, 'link', 'id INTEGER PRIMARY KEY AUTOINCREMENT, string TEXT')
+        create_table(cursor, 'countries', 'id INTEGER PRIMARY KEY AUTOINCREMENT, name TEXT, code TEXT')
+        create_table(cursor, 'keys',
+                     'id INTEGER PRIMARY KEY AUTOINCREMENT, '
+                     'country INTEGER, '
+                     'date TEXT, '
+                     'key TEXT, '
+                     'FOREIGN KEY (country) REFERENCES countries (id)')
+        conn.commit()
+
+
+def create_table(cursor, table_name, columns):
+    """Create a table if it does not exist."""
+    query = f'CREATE TABLE IF NOT EXISTS {table_name} ({columns})'
+    cursor.execute(query)
+
+
+# Uncomment the following lines to insert sample data
+# insert_country('Россия', 'ru')
+# insert_country('Соединённые Штаты', 'us')
+# insert_key('1', '2022-01-01', 'abc123')
+# insert_key('2', '2022-01-02', 'def456')

@@ -16,6 +16,17 @@ export class CountryService {
     const url = `${API_URL}/api_open/countries`;
     return this.http.get<any[]>(url);
   }
+
+  getLink() {
+    const url = `${API_URL}/api_open/link`;
+    return this.http.get<any>(url);
+  }
+
+  changeLink(data: any) {
+    const url = `${API_URL}/api/link`;
+    const headers = this.authService.getHeaders();
+    return this.http.post(url, data, { headers });
+  }
   
   getKeys() {
     const url = `${API_URL}/api_open/keys`;

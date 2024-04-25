@@ -51,6 +51,11 @@ def get_keys_id_api(id):
     countries = get_key_by_id(id)
     return jsonify(countries)
 
+@app.route('/api_open/link', methods=['GET'])
+def get_link(id):
+    link = get_link()
+    return jsonify(link)
+
 
 
 # API для добавления нового государства в таблицу countries
@@ -102,6 +107,14 @@ def upd_key(id):
     print(id, country, key)
     update_key(id, country, key)
     return jsonify({'message': 'Key updated successfully'})
+
+@app.route('/api/link', methods=['PUT'])
+@jwt_required()
+def upd_link(link):
+    data = request.get_json()
+    country = data['link']
+    change_link(str(link))
+    return jsonify({'message': 'Link updated successfully'})
 
 # API для удаления ключа из таблицы keys
 @app.route('/api/keys/<id>', methods=['DELETE'])
