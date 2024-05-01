@@ -1,0 +1,52 @@
+{
+    "header":{
+        "title-lg":"Keys for Outline VPN",
+        "title":"Keys Outline VPN",
+        "download": "Download Outline",
+        "close": "Close",
+        "blog": "Blog"
+    },
+
+    "admin-panel":{
+        "enter":"Enter",
+        "login":"Login",
+        "login-err":"The login field is required.",
+        "password":"Password",
+        "password-err":"The password field is required.",
+        "to-enter": "Sign in"
+    },
+
+    "time":{
+        "months": "month(-s) ago",
+        "minutes": "minute(-s) ago",
+        "hours": "hour(-s) ago",
+        "days": "day(-s) ago",
+        "ms":"ms"
+    },
+
+    "key":{
+        "key":"Key",
+        "by": "by",
+        "tg": "Telegram Channel",
+        "open": "Open",
+        "qr": "QR code",
+        "copy": "Copy",
+        "download": "Download Outline",
+        "download2": "for your device",
+        "how": "How to connect?",
+        "how2": "Copy the key and open the app",
+        "how3": "Paste the key by clicking \"+\" (add)",
+        "how4": "Connect to the server",
+        "qr1": "Add the key using a QR code",
+        "qr2": "Open the camera app on your phone",
+        "qr3": "Point your phone at this page to add the key",
+        "loading": "Loading... Checking our keys ( for your convenience ) "
+    },
+
+    "country":{
+        "no-countries": "No countries have been added yet.",
+        "allCountries": "All Countries",
+        "published": "Published",
+        "no-keys":"No keys for this country are added yet "
+    }
+}

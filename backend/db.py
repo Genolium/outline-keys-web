@@ -100,14 +100,47 @@ def get_link():
         link = cursor.fetchone()
         return link
     
-def change_link(string):
+def change_link(string: str) -> None:
     with get_connection() as conn:
         cursor = conn.cursor()
-        cursor.execute('UPDATE link SET string = ? WHERE row_id=1', (string,))
+        cursor.execute('UPDATE link SET string = ? WHERE rowid = 1', (string,))
+        conn.commit()
+        
+def get_all_posts_from_db():
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM posts ORDER BY rowid DESC')
+        posts = cursor.fetchall()
+        return posts
+
+def create_post_in_db(title, text, cover):
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute('INSERT INTO posts (title, text, cover) VALUES (?, ?, ?)',
+                    (title, text, cover))
+        conn.commit()
+
+def get_post_from_db(post_id):
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute('SELECT * FROM posts WHERE id=?', (post_id,))
+        post = cursor.fetchone()
+        return post
+
+def update_post_in_db(post_id, title, text, cover):
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute('UPDATE posts SET title=?, text=?, cover=? WHERE id=?',
+                    (title, text, cover, post_id))
+        conn.commit()
+
+def delete_post_from_db(post_id):
+    with get_connection() as conn:
+        cursor = conn.cursor()
+        cursor.execute('DELETE FROM posts WHERE id=?', (post_id,))
         conn.commit()
                
 def create_tables() -> None:
-    """Create tables if they do not exist."""
     with get_connection() as conn:
         cursor = conn.cursor()
         create_table(cursor, 'link', 'id INTEGER PRIMARY KEY AUTOINCREMENT, string TEXT')
@@ -118,11 +151,16 @@ def create_tables() -> None:
                      'date TEXT, '
                      'key TEXT, '
                      'FOREIGN KEY (country) REFERENCES countries (id)')
+        create_table(cursor,
+        'posts',
+        'id INTEGER PRIMARY KEY AUTOINCREMENT, '
+        'title TEXT NOT NULL, '
+        'text TEXT NOT NULL, '
+        'cover BLOB NOT NULL'
+    )
         conn.commit()
 
-
 def create_table(cursor, table_name, columns):
-    """Create a table if it does not exist."""
     query = f'CREATE TABLE IF NOT EXISTS {table_name} ({columns})'
     cursor.execute(query)
 

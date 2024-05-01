@@ -1,0 +1,75 @@
+<app-header></app-header>
+
+<div class="block">
+  <div class="row gx-5">
+    <div class="d-flex align-items-center">
+      <span class="me-2 btn-icon flag-icon flag-icon-{{key[2]}}"
+                            style="height: 45px; width: 60px;border-radius: 3px;"></span>
+      <h1 class="title-keys">{{"key.key"| translate}} {{key[1]}} #{{key[0]}}</h1>
+    </div>
+    <div class="d-flex align-items-center mt-1">
+      <div class="d-flex align-items-center"><i class="me-1 status-online"></i>
+        <span *ngIf="key[5]==-1">Offline</span>
+        <span *ngIf="key[5]!=-1" class="text-success">Online, {{key[5]}}{{"time.ms"| translate}}</span>
+        </div>      
+      <div class="me-1 text-muted ms-1">•</div>
+      <span class="d-inline-block text-truncate">{{getTime(key[3])[0]}} {{getTime(key[3])[1] | translate}}</span>
+    </div>
+  </div>
+</div>
+
+<div class="mt-2">
+  <div class="text-muted text-truncate mb-1">{{"key.by"| translate}} <a href={{link[1]}} rel="nofollow" target="_blank"
+      class="text-decoration-none">{{"@"+link[1].replace('https://', '').replace('http://', '').replace('t.me/', '')}}</a> / {{"key.tg"| translate}}</div> <textarea
+    class="form-control shadow-none" id="accessKey" rows="3"
+    readonly="">{{key[4]}}</textarea>
+  <div class="mt-2 d-flex justify-content-center">
+    <a class="btn btn-success me-2"
+      href="{{key[4]}}">{{"key.open"| translate}}</a>
+    <button type="button" class="btn btn-warning me-2" data-bs-toggle="modal" data-bs-target="#qrcodemodal">{{"key.qr"| translate}}</button>
+    <button type="button" class="btn btn-dark" (click)="copyToClipboard()" id="copyButton">{{"key.copy"| translate}}</button>
+  </div>
+</div>
+
+<div class="modal fade" id="qrcodemodal" tabindex="-1" aria-labelledby="qrcodemodalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="qrcodemodalLabel">{{"key.qr"| translate}}</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p class="fw-bolder">{{"key.qr1"| translate}}</p>
+        <ul>
+          <li>{{"key.qr2"| translate}}</li>
+          <li>{{"key.qr3"| translate}}</li>
+        </ul>
+        <hr>
+        <div class="d-flex justify-content-center mt-2">
+          <ngx-qrcode
+            [elementType]="elementType"
+            [errorCorrectionLevel]="correctionLevel"
+            [value]="value"
+            cssClass="bshadow"></ngx-qrcode>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">{{"header.close"| translate}}</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="mt-3 mb-1">
+  <p><strong>{{"key.how"| translate}}</strong></p>
+  <ul>
+    <li><a class="text-decoration-none" href="https://getoutline.org/ru/">{{"key.download"| translate}}</a> {{"key.download2"| translate}}</li>
+    <li>{{"key.how2"| translate}}</li>
+    <li>{{"key.how3"| translate}}</li>
+    <li>{{"key.how4"| translate}}</li>
+  </ul>
+</div>
+
+<h4>{{"country.allCountries"| translate}}</h4>
+<app-country-list-component></app-country-list-component>
+

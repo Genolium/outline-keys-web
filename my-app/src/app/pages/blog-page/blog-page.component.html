@@ -1,0 +1,7 @@
+<app-header></app-header>
+
+<div class="p-2">
+  <h1>{{ post.title }}</h1>
+  <img class="img img-fluid mb-3" [src]="post.cover" />
+  <div [innerHTML]="post.text"></div>
+</div>

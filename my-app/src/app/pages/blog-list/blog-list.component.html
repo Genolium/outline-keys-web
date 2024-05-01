@@ -1,0 +1,19 @@
+<app-header></app-header>
+
+<h2 class="mb-5">{{ "header.blog" | translate }}</h2>
+<hr />
+<div class="row p-1">
+  <div class="col-md-6 mb-3 mt-1 p-1" *ngFor="let post of posts">
+    <a href="/blog/{{ post.id }}" class="h-100 card mb-4 text-decoration-none">
+      <img
+        class="card-img-top"
+        style="width: 100%; max-height: 350px; object-fit: cover"
+        [src]="post.cover"
+      />
+      <div class="card-body">
+        <h5>{{ post.title }}</h5>
+        <div class="card-text" [innerHTML]="post.text"></div>
+      </div>
+    </a>
+  </div>
+</div>
