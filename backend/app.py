@@ -10,11 +10,13 @@ from flask_jwt_extended import JWTManager, create_access_token, jwt_required, un
 from dotenv import load_dotenv
 from cachetools import TTLCache
 from db import *
+from flask_compress import Compress
 
 load_dotenv() 
 app = Flask(__name__)
 #cors = CORS(app, resources={r"/*": {"origins": "*"}})
 app.config['JWT_SECRET_KEY'] = os.getenv('SECRET_KEY')  
+Compress(app)
 cors = CORS(app)
 cache = TTLCache(maxsize=1000, ttl=3600)
 jwt = JWTManager(app)

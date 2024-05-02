@@ -13,54 +13,28 @@
           "header.title" | translate
         }}</span></a
       >
+      
     </div>
-    <button
-      class="navbar-toggler"
-      type="button"
-      data-bs-toggle="collapse"
-      data-bs-target="#navbarSupportedContent"
-      aria-controls="navbarSupportedContent"
-      aria-expanded="false"
-      aria-label="Toggle navigation"
-    >
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse p-2 my-2 d-flex-md align-items-center justify-content-md-end " id="navbarSupportedContent">    
-      <div class="d-flex align-items-center justify-content-between ">
-        <mat-form-field class="me-2">
-          <mat-select
-            placeholder="🌐"
-            [(ngModel)]="lang"
-            (ngModelChange)="changeLanguage($event)"
+    <div class="d-flex align-items-center justify-content-between">        
+      <a
+        href="{{ key[1] }}"
+        title="Telegram"
+        rel="nofollow"
+        class="d-flex align-items-center text-body-emphasis text-decoration-none"
+      >
+        <div class="telegram-icon">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="32"
+            height="27"
+            viewBox="0 0 32 27"
           >
-            <mat-option value="ru" style="display: flex; align-items: center"
-              ><span class="me-2 btn-icon flag-icon flag-icon-ru"></span>Русский
-            </mat-option>
-            <mat-option value="en" style="display: flex; align-items: center"
-              ><span class="me-2 btn-icon flag-icon flag-icon-us"></span>English
-            </mat-option>
-          </mat-select>
-        </mat-form-field>
-        <a
-          href="{{ key[1] }}"
-          title="Telegram канал"
-          rel="nofollow"
-          class="d-flex align-items-center text-body-emphasis text-decoration-none"
-        >
-          <div class="telegram-icon">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              width="32"
-              height="27"
-              viewBox="0 0 32 27"
-            >
-              <path
-                d="M29.2719 0.235421C29.2719 0.235421 32.2321 -0.918865 31.9854 1.88441C31.9032 3.03871 31.1631 7.07871 30.5875 11.4485L28.614 24.3931C28.614 24.3931 28.4496 26.2894 26.9695 26.6192C25.4893 26.949 23.2692 25.4649 22.858 25.1351C22.5291 24.8878 16.6909 21.1775 14.6351 19.3637C14.0595 18.869 13.4017 17.8796 14.7173 16.7253L23.3514 8.48039C24.3381 7.49098 25.3249 5.1824 21.2134 7.98568L9.70142 15.8184C9.70142 15.8184 8.38576 16.6428 5.91894 15.9008L0.574035 14.2518C0.574035 14.2518 -1.39946 13.0151 1.97193 11.7783C10.1948 7.90317 20.309 3.9456 29.2719 0.235421Z"
-              ></path>
-            </svg>
-          </div>
-        </a>
-      </div>
+            <path
+              d="M29.2719 0.235421C29.2719 0.235421 32.2321 -0.918865 31.9854 1.88441C31.9032 3.03871 31.1631 7.07871 30.5875 11.4485L28.614 24.3931C28.614 24.3931 28.4496 26.2894 26.9695 26.6192C25.4893 26.949 23.2692 25.4649 22.858 25.1351C22.5291 24.8878 16.6909 21.1775 14.6351 19.3637C14.0595 18.869 13.4017 17.8796 14.7173 16.7253L23.3514 8.48039C24.3381 7.49098 25.3249 5.1824 21.2134 7.98568L9.70142 15.8184C9.70142 15.8184 8.38576 16.6428 5.91894 15.9008L0.574035 14.2518C0.574035 14.2518 -1.39946 13.0151 1.97193 11.7783C10.1948 7.90317 20.309 3.9456 29.2719 0.235421Z"
+            ></path>
+          </svg>
+        </div>
+      </a>
     </div>
   </div>
 </header>

@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { AuthService } from './auth-service.service';
-import { catchError, tap, throwError } from 'rxjs';
 import { TranslateService } from '@ngx-translate/core';
 
 const API_URL = 'http://'+(window as any).location.hostname+':5000';
@@ -14,8 +13,8 @@ export class CountryService {
   constructor( public authService: AuthService, private http: HttpClient, private translate: TranslateService) { }
 
   getCountries() {
-    console.log(this.translate);
-    const url = `${API_URL}/api_open/countries?lng=${this.translate.store.currentLang}`;
+    const lang = this.translate.store.currentLang || this.translate.store.defaultLang;
+    const url = `${API_URL}/api_open/countries?lng=${lang}`;
     return this.http.get<any[]>(url);
   }
 
@@ -31,17 +30,20 @@ export class CountryService {
   }
   
   getKeys() {
-    const url = `${API_URL}/api_open/keys?lng=${this.translate.store.currentLang}`;
+    const lang = this.translate.store.currentLang || this.translate.store.defaultLang;
+    const url = `${API_URL}/api_open/keys?lng=${lang}`;
     return this.http.get<any[]>(url);
   }
 
   getKeysById(key: number) {
-    const url = `${API_URL}/api_open/key/${key}?lng=${this.translate.store.currentLang}`;
+    const lang = this.translate.store.currentLang || this.translate.store.defaultLang;
+    const url = `${API_URL}/api_open/key/${key}?lng=${lang}`;
     return this.http.get<any[]>(url);
   }
 
   getCountriesById(country: number) {
-    const url = `${API_URL}/api_open/country/${country}?lng=${this.translate.store.currentLang}`;
+    const lang = this.translate.store.currentLang || this.translate.store.defaultLang;
+    const url = `${API_URL}/api_open/country/${country}?lng=${lang}`;
     return this.http.get<any[]>(url);
   }
   

@@ -14,6 +14,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { routes } from './app.routes';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { JwtHelperService, JWT_OPTIONS } from '@auth0/angular-jwt';
+import { FooterComponent } from "./footer/footer.component";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -32,36 +33,35 @@ export class AppComponent {
 }
 
 @NgModule({
-  declarations: [AppComponent],
-  imports: [HttpClientModule, RouterModule, RouterOutlet, BrowserModule,
-    RouterModule, TranslateModule,
-    TranslateModule.forRoot({
-      loader: {
-        provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient],
-      }
-    }),
-  ],
-  providers: [HttpClient, RouterModule,
-    { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
-    JwtHelperService,
-    provideRouter(routes),
-    provideAnimations(),
-    CommonModule,
-    ReactiveFormsModule,
-    BrowserAnimationsModule,
-    NoopAnimationsModule,
-    HttpClientModule,
-    BrowserModule,
-    provideHttpClient(),    
-  ],
-  bootstrap: [AppComponent],
+    declarations: [AppComponent],
+    providers: [HttpClient, RouterModule,
+        { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        JwtHelperService,
+        provideRouter(routes),
+        provideAnimations(),
+        CommonModule,
+        ReactiveFormsModule,
+        BrowserAnimationsModule,
+        NoopAnimationsModule,
+        HttpClientModule,
+        BrowserModule,
+        provideHttpClient(),
+    ],
+    bootstrap: [AppComponent],
+    imports: [HttpClientModule, RouterModule, RouterOutlet, BrowserModule,
+        RouterModule, TranslateModule,
+        TranslateModule.forRoot({
+            loader: {
+                provide: TranslateLoader,
+                useFactory: HttpLoaderFactory,
+                deps: [HttpClient],
+            }
+        }), FooterComponent]
 })
 export class AppModule {
   constructor(private translate: TranslateService) {
     translate.store.langs=["en", "ru"];
-    translate.setDefaultLang("ru");
+    translate.setDefaultLang("en");
     const cookieLang = document.cookie
       .split('; ')
       .find((cookie) => cookie.startsWith('lang='))

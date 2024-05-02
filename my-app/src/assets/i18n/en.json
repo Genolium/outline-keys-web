@@ -47,6 +47,7 @@
         "no-countries": "No countries have been added yet.",
         "allCountries": "All Countries",
         "published": "Published",
-        "no-keys":"No keys for this country are added yet "
+        "no-keys":"No keys for this country are added yet ",
+        "other-countries" : "Other countries:"
     }
 }
